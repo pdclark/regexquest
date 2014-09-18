@@ -41,12 +41,14 @@ game.PuzzleGUI = Object.extend({
     },
 
     show: function() {
+        game.updateKeyBindings( "showInput" );
         puzzleBoxElem.clearQueue();
         puzzleBoxElem.show();
         patternElem.focus();
     },
 
     hide: function() {
+        game.updateKeyBindings( "hideInput" );
         puzzleBoxElem.hide();
     },
 
@@ -68,6 +70,8 @@ game.PuzzleGUI = Object.extend({
     showResult: function(good) {
         if (good) {
 
+            game.updateKeyBindings( "hideInput" );
+            
             $("#wrongAnswer").hide();
             $("#rightAnswer").show();
             resultElem.css("color", "green");
